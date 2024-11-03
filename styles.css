@@ -1,0 +1,422 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.sidebar {
+  padding: 1rem;
+  border-right: 2px solid #efefef;
+  width: 120px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.sidebar-icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.add-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+  backface-visibility: hidden;
+  background-clip: padding-box;
+}
+
+.notes-color {
+  display: none;
+  margin-top: 2rem;
+}
+
+.notes-color.show {
+  display: block;
+}
+
+.note-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 1em;
+  background-clip: padding-box;
+  backface-visibility: hidden;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.notes-color.show .note-color {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.notes-color.show .note-color:nth-child(1) {
+  transition-delay: 0.013s;
+}
+
+.notes-color.show .note-color:nth-child(2) {
+  transition-delay: 0.025s;
+}
+
+.notes-color.show .note-color:nth-child(3) {
+  transition-delay: 0.05s;
+}
+
+.notes-color.show .note-color:nth-child(4) {
+  transition-delay: 0.1s;
+}
+
+.notes-color.show .note-color:nth-child(5) {
+  transition-delay: 0.2s;
+}
+
+.notes-color.show .note-color:nth-child(6) {
+  transition-delay: 0.3s;
+}
+
+main {
+  position: absolute;
+  top: 0;
+  left: 120px;
+  width: 92%;
+  min-height: 100vh;
+  padding: 0.8rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.search-container {
+  padding: 0;
+  width: 250px;
+  height: 35px;
+  border: none;
+  background: #f6f6f6;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-box {
+  background: transparent;
+  border: none;
+  color: #a2a2a2;
+  font-size: 1em;
+}
+
+.search-box:focus {
+  outline: none;
+}
+
+.notes-heading {
+  font-size: 3rem;
+  font-weight: 500;
+  margin-top: 4.2rem;
+}
+
+.notes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+.note {
+  width: 300px;
+  height: 300px;
+  background: #fe9b72;
+  border-radius: 20px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: bounceIn 0.6s forwards;
+}
+
+.note.deleting {
+  animation: bounceOut 0.6s forwards;
+}
+
+.note-text {
+  word-wrap: break-word;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #372d14;
+}
+
+.date {
+  color: #372d14;
+}
+
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-input {
+  width: 100%;
+  height: 200px;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #372d14;
+  resize: none;
+}
+
+.note-input:focus {
+  outline: none;
+}
+
+.edit-icon,
+.save-icon,
+.cancel-icon {
+  width: 40px;
+  height: 40px;
+  background: black;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-clip: padding-box;
+  backface-visibility: hidden;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add transition for background color */
+}
+
+.add-icon:hover,
+.edit-icon:hover,
+.save-icon:hover,
+.cancel-icon:hover,
+.edit-icon:focus,
+.save-icon:focus,
+.cancel-icon:focus {
+  background-color: #555; /* Change to desired hover/focus color */
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 1rem;
+  }
+  .sidebar {
+    width: 80px;
+  }
+
+  .sidebar-icons {
+    margin-top: 3rem;
+  }
+
+  .add-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .notes-color {
+    margin-top: 1rem;
+  }
+
+  .note-color {
+    width: 15px;
+    height: 15px;
+  }
+
+  main {
+    left: 80px;
+    width: 89%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .search-container {
+    width: 200px;
+    height: 30px;
+  }
+
+  .search-box {
+    font-size: 0.8em;
+  }
+
+  .notes-heading {
+    font-size: 2rem;
+    margin-top: 2.2rem;
+  }
+
+  .notes-container {
+    margin-top: 2rem;
+    gap: 1.5rem;
+  }
+
+  .note {
+    width: 250px;
+    height: 250px;
+    padding: 1rem;
+  }
+
+  .note-text {
+    font-size: 1rem;
+  }
+
+  .date {
+    font-size: 0.8rem;
+  }
+
+  .note-input {
+    height: 150px;
+    font-size: 1rem;
+  }
+
+  .edit-icon,
+  .save-icon,
+  .cancel-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .fa-solid {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 0.6rem;
+  }
+
+  .sidebar {
+    width: 60px;
+  }
+
+  .sidebar-icons {
+    margin-top: 2rem;
+  }
+
+  .add-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .notes-color {
+    margin-top: 0.5rem;
+  }
+
+  .note-color {
+    width: 10px;
+    height: 10px;
+  }
+
+  main {
+    left: 60px;
+    width: 86%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .search-container {
+    width: 180px;
+    height: 25px;
+  }
+
+  .search-box {
+    font-size: 0.7em;
+  }
+
+  .notes-heading {
+    font-size: 1.5rem;
+    margin-top: 1.2rem;
+  }
+
+  .notes-container {
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+
+  .note {
+    width: 200px;
+    height: 200px;
+    padding: 0.8rem;
+  }
+
+  .note-text {
+    font-size: 0.8rem;
+  }
+
+  .date {
+    font-size: 0.7rem;
+  }
+
+  .note-input {
+    height: 100px;
+    font-size: 0.8rem;
+  }
+
+  .edit-icon,
+  .save-icon,
+  .cancel-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .fa-solid {
+    font-size: 0.7rem;
+  }
+}
